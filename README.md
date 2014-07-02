@@ -1,4 +1,4 @@
-# &lt;x-instagram&gt;
+# &lt;strava-card&gt;
 
 A [Polymer](http://polymer-project.org) element for querying results from the [Strava API](http://strava.github.io/api/)
 
