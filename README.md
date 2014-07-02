@@ -12,6 +12,10 @@ Using [Bower](http://bower.io), run:
 $ bower install --save strava-card
 ```
 
+## Demo
+
+> [See it in action](http://brentvatne.github.io/strava-card/)
+
 ## Usage
 
 1. Import Web Components' polyfill:
