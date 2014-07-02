@@ -33,6 +33,44 @@
           margin: 0;
         }
       }
+
+      .avatar {
+        box-shadow: 0 0 0 3px #fff;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .card {
+        -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        padding: 10px;
+        width: 300px;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        position: relative;
+      }
+
+      p {
+        margin-top: 0px;
+      }
+
+      .basic-info {
+        position: absolute;
+        top: 15px;
+        left: 90px;
+      }
+
+      .name {
+        display: block;
+        margin-bottom: 0px;
+        font-size: 24px;
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+      }
+
+      .address {
+        color: #888;
+      }
     </style>
 
     <polymer-jsonp id="ajax" auto
@@ -40,10 +78,14 @@
     </polymer-jsonp>
 
     <div class="strava">
-      <div id="athlete">
-        <img src="{{athlete.profile_medium}}"/>
-        <h2>{{athlete.firstname}} {{athlete.lastname}}</h2>
-        <p>{{athlete.city}}, {{athlete.country}}</p>
+      <div id="athlete" class="card">
+        <img src="{{athlete.profile_medium}}" class="avatar"/>
+        <div class="basic-info">
+          <a href="http://www.strava.com/athletes/{{athlete.id}}" class="name">
+            {{athlete.firstname}} {{athlete.lastname}}
+          </a>
+          <span class="address">{{athlete.city}}, {{athlete.state}}, {{athlete.country}}</p>
+        </div>
       </div>
     </div>
   </template>
