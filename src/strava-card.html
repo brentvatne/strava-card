@@ -1,0 +1,72 @@
+<!--
+/**
+ * @module strava-card
+ */
+/**
+ * Element to display a summary of an athlete's strava profile.
+ *
+ * Example:
+ *
+ *     <strava-card name="brentvatne"></strava-car>
+ *
+ * @class strava-card
+ * @blurb Element access to the Strava API
+ * @author Brent Vatne
+ * @categories Data
+ *
+ */
+/**
+ * Fired after results are loaded
+ *
+ * @event strava-card-load
+ */
+-->
+
+<link rel="import" href="../app/bower_components/polymer-jsonp/polymer-jsonp.html">
+
+<polymer-element name="strava-card" attributes="name">
+  <template>
+    <style>
+      :host {
+        * {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    </style>
+
+    <polymer-jsonp id="ajax" auto
+      url="https://www.strava.com/api/v3/athletes/{{athleteId}}?access_token={{clientId}}&callback=">
+    </polymer-jsonp>
+
+    <div class="strava">
+      <div id="athlete">
+        <img src="{{athlete.profile_medium}}"/>
+        <h2>{{athlete.firstname}} {{athlete.lastname}}</h2>
+        <p>{{athlete.city}}, {{athlete.country}}</p>
+      </div>
+    </div>
+  </template>
+
+
+  <script>
+    Polymer('strava-card', {
+      athleteId: '4756028',
+      athlete: {athlete: {}},
+      clientId: '8a83ffcf349484d7839f5b3663d960b9ed33656a',
+      ready: function () {
+        // Refers to the photos template (id: photos)
+        this.$.athlete.model = this.athlete;
+
+        // Refers to the ajax object (id: ajax)
+        this.$.ajax.addEventListener('polymer-response',
+          function (e) {
+            this.athlete = e.detail.response;
+            this.$.athlete.model = e.detail.response;
+            this.fire('strava-card-load', {response: e.detail.response});
+          }.bind(this)
+        );
+      }
+    });
+  </script>
+</polymer-element>

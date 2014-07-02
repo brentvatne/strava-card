@@ -1,0 +1,28 @@
+{
+  "name": "strava-card",
+  "version": "0.0.1",
+  "homepage": "https://github.com/brentvatne/strava-card",
+  "authors": [
+    "Brent Vatne <brentvatne@gmail.com>"
+  ],
+  "description": "A Polymer element for querying the Strava API",
+  "main": "strava-card.html",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "strava"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "platform": "Polymer/platform#~0.2.0",
+    "polymer": "Polymer/polymer#~0.2.0",
+    "polymer-jsonp": "Polymer/polymer-jsonp#~0.2.0"
+  }
+}
