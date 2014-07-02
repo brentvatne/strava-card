@@ -29,7 +29,7 @@ $ bower install --save strava-card
 3. Start using it!
 
 ```html
-<strava-card athleteId="yourathleteidinteger"></strava-card>
+<strava-card athlete-id="yourathleteidinteger"></strava-card>
 ```
 
 ## Setup
