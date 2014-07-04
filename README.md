@@ -21,14 +21,16 @@ $ bower install --save strava-card
 1. Import Web Components' polyfill:
 
 ```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/platform.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.3.3/platform.js"></script>
 ```
 
 2. Import Custom Element:
 
 ```html
-<link rel="import" href="src/strava-card.html">
+<link rel="import" href="strava-card.html">
 ```
+
+ * Where the href includes the full path to the dependency..
 
 3. Start using it!
 
