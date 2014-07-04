@@ -18,7 +18,8 @@
 /**
  * Fired after results are loaded
  *
- * @event strava-card-load
+ * @event strava-card-athlete-load
+ * @event strava-card-activity-load
  */
 -->
 
@@ -29,8 +30,12 @@
   <template>
     <link rel="stylesheet" href="strava-card.css" />
 
-    <polymer-jsonp id="ajax" auto
+    <polymer-jsonp id="identity" auto
       url="https://www.strava.com/api/v3/athletes/{{athleteId}}?access_token={{clientId}}&callback=">
+    </polymer-jsonp>
+
+    <polymer-jsonp id="activity" auto
+      url="https://strava-scraper.herokuapp.com/{{athleteId}}?callback=">
     </polymer-jsonp>
 
     <div class="strava">
@@ -44,6 +49,26 @@
             {{athlete.city}}, {{athlete.state}}, {{athlete.country}}
           </span>
         </div>
+        <div id="athlete-activity">
+          <span class="current-activity">
+            {{activity.current.distance}}, {{activity.current.time}},
+            {{activity.current.elevation}}
+          </span>
+
+          <span class="this-year-activity">
+            {{activity.year.sport}},
+            {{activity.year.distance}}, {{activity.year.time}},
+            {{activity.year.elevation}},
+            {{activity.year.activities}}
+          </span>
+
+          <span class="all-time-activity">
+            {{activity.all.sport}},
+            {{activity.all.distance}}, {{activity.all.time}},
+            {{activity.all.elevation}},
+            {{activity.all.activities}}
+          </span>
+        </div>
       </div>
     </div>
   </template>
@@ -52,17 +77,23 @@
     Polymer('strava-card', {
       athleteId: '4756028',
       athlete: {},
+      // Using my own clientId, not the best idea, need to replace this
+      // with some other mechanism for including your own
       clientId: '8a83ffcf349484d7839f5b3663d960b9ed33656a',
       ready: function () {
-        // Refers to the athlete template (id: athlete)
-        this.$.athlete.model = this.athlete;
+        this.loaded = 0;
+        this.$.activity.addEventListener('polymer-response',
+          function (e) {
+            this.activity = e.detail.response;
+            this.fire('strava-card-activity-load', {response: e.detail.response});
+          }.bind(this)
+        );
 
         // Refers to the ajax object (id: ajax)
-        this.$.ajax.addEventListener('polymer-response',
+        this.$.identity.addEventListener('polymer-response',
           function (e) {
             this.athlete = e.detail.response;
-            this.$.athlete.model = e.detail.response;
-            this.fire('strava-card-load', {response: e.detail.response});
+            this.fire('strava-card-athlete-load', {response: e.detail.response});
           }.bind(this)
         );
       }
