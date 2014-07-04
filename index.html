@@ -7,8 +7,12 @@
     <!-- Importing Web Component's Polyfill -->
     <script src="app/bower_components/platform/platform.js"></script>
 
+    <!-- Importing the card's dependencies here because we want it to work with bower
+         so we have to include the relative path in the strava-card file -->
+    <link rel="import" href="app/bower_components/polymer-jsonp/polymer-jsonp.html">
+
     <!-- Importing Custom Elements -->
-    <link rel="import" href="src/strava-card.html">
+    <link rel="import" href="strava-card.html">
   </head>
 
   <body>

@@ -21,8 +21,8 @@
     "tests"
   ],
   "dependencies": {
-    "platform": "Polymer/platform#~0.2.0",
-    "polymer": "Polymer/polymer#~0.2.0",
-    "polymer-jsonp": "Polymer/polymer-jsonp#~0.2.0"
+    "polymer": "Polymer/polymer#~0.3.3",
+    "polymer-platform": "Polymer/platform#~0.3.3",
+    "polymer-jsonp": "Polymer/polymer-jsonp#~0.3.0"
   }
 }
