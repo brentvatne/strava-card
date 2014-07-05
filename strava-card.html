@@ -40,34 +40,59 @@
 
     <div class="strava">
       <div id="athlete" class="card">
-        <img src="{{athlete.profile_medium}}" class="avatar"/>
-        <div class="basic-info">
-          <a href="http://www.strava.com/athletes/{{athlete.id}}" class="name">
-            {{athlete.firstname}} {{athlete.lastname}}
-          </a>
-          <span class="address">
-            {{athlete.city}}, {{athlete.state}}, {{athlete.country}}
-          </span>
+        <h3 class="card-header primary">Strava</h3>
+        <div class="athlete-identity content">
+          <img src="{{athlete.profile_medium}}" class="avatar"/>
+          <div class="basic-info">
+            <a href="http://www.strava.com/athletes/{{athlete.id}}" class="name">
+              {{athlete.firstname}} {{athlete.lastname}}
+            </a>
+            <span class="address">
+              {{athlete.city}}, {{athlete.state}}, {{athlete.country}}
+            </span>
+          </div>
         </div>
         <div id="athlete-activity">
-          <span class="current-activity">
-            {{activity.current.distance}}, {{activity.current.time}},
-            {{activity.current.elevation}}
-          </span>
+          <div class="activity-information current-activity">
+            <h3 class="card-header">Current Month</h3>
+            <div class="content">
+              <span class="distance">{{activity.current.distance}}</span>
+              /
+              <span class="time">{{activity.current.time}}</span>
+              /
+              <span class="elevation">{{activity.current.elevation}}</span>
+            </div>
+          </div>
 
-          <span class="this-year-activity">
-            {{activity.year.sport}},
-            {{activity.year.distance}}, {{activity.year.time}},
-            {{activity.year.elevation}},
-            {{activity.year.activities}}
-          </span>
+          <div class="activity-information this-year-activity">
+            <h3 class="card-header">This Year</h3>
+            <div class="content">
+              <span class="sport">{{activity.year.sport}}</span>
+              /
+              <span class="distance">{{activity.year.distance}}</span>
+              /
+              <span class="time">{{activity.year.time}}</span>
+              /
+              <span class="elevation">{{activity.year.elevation}}</span>
+              /
+              <span class="activities">{{activity.year.activities}}</span>
+            </div>
+          </div>
 
-          <span class="all-time-activity">
-            {{activity.all.sport}},
-            {{activity.all.distance}}, {{activity.all.time}},
-            {{activity.all.elevation}},
-            {{activity.all.activities}}
-          </span>
+          <div class="activity-information all-time-activity">
+            <h3 class="card-header">All Time</h3>
+            <div class="content">
+              <span class="sport">{{activity.all.sport}}</span>
+              /
+              <span class="distance">{{activity.all.distance}}</span>
+              /
+              <span class="time">{{activity.all.time}}</span>
+              /
+              <span class="elevation">{{activity.all.elevation}}</span>
+              /
+              <span class="activities">{{activity.all.activities}}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
